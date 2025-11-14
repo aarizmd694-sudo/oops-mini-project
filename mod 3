@@ -1,0 +1,42 @@
+MODULE 3:
+class Record<T> {
+    private T data;
+
+    public Record(T data) {
+        this.data = data;
+    }
+
+    public void display() {
+        System.out.println("Employee Record: " + data);
+    }
+}
+
+class LeaveProcessor extends Thread {
+    private String employeeName;
+
+    public LeaveProcessor(String employeeName) {
+        this.employeeName = employeeName;
+    }
+ public void run() {
+        System.out.println("Processing leave for: " + employeeName);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) { }
+        System.out.println("Leave approval completed for: " + employeeName);
+    }
+}
+
+public class Module3_GenericsThreads {
+    public static void main(String[] args) {
+
+        Record<String> employeeRecord = new Record<>("John Doe - EMP500");
+        employeeRecord.display();
+
+        LeaveProcessor p1 = new LeaveProcessor("Alice");
+        LeaveProcessor p2 = new LeaveProcessor("Bob");
+
+        p1.start();
+        p2.start();
+    }
+}
+
