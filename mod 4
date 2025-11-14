@@ -1,0 +1,29 @@
+MODULE 4:(Backend and Database connection) 
+
+import java.net.*;
+import java.sql.*;
+
+public class Module4_NetworkJDBC {
+
+    public static void main(String[] args) {
+
+        // Network simulation
+        try {
+            InetAddress addr = InetAddress.getLocalHost();
+            System.out.println("Connected to Employee Leave Server: " + addr.getHostName());
+            System.out.println("IP Address: " + addr.getHostAddress());
+        } catch (Exception e) {
+            System.out.println("Network error: " + e.getMessage());
+        }
+
+        // JDBC simulation
+        System.out.println("\nSimulating JDBC connection...");
+        try {
+  System.out.println("Connecting to EmployeeLeaveDB...");
+            System.out.println("Executing query: SELECT * FROM EmployeeLeaves;");
+            System.out.println("Retrieved 5 employee leave records.");
+        } catch (Exception e) {
+            System.out.println("Database connection failed.");
+        }
+    }
+} 
