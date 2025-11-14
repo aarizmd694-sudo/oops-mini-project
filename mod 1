@@ -1,0 +1,48 @@
+Module 1:
+abstract class Employee {
+    protected String name;
+    protected String employeeId;
+    protected int totalLeaves;
+    private static int totalEmployees = 0;
+
+    public Employee(String name, String employeeId, int totalLeaves) {
+        this.name = name;
+        this.employeeId = employeeId;
+        this.totalLeaves = totalLeaves;
+        totalEmployees++;
+    }
+
+    public abstract void displayEmployeeInfo();
+
+    public static int getTotalEmployees() {
+        return totalEmployees;
+    }
+
+    @Override
+    protected void finalize() {
+        System.out.println("Finalizing employee object: " + name);
+    }
+}
+
+class FullTimeEmployee extends Employee {
+    private int leavesTaken;
+ }
+
+    @Override
+    public void displayEmployeeInfo() {
+        System.out.println("Employee: " + name 
+                + ", ID: " + employeeId 
+                + ", Total Leaves: " + totalLeaves 
+                + ", Leaves Taken: " + leavesTaken 
+                + ", Leaves Remaining: " + (totalLeaves - leavesTaken));
+    }
+}
+
+public class Module1_OOP {
+    public static void main(String[] args) {
+        FullTimeEmployee emp1 = new FullTimeEmployee("John Doe", "EMP123", 20, 5);
+
+        emp1.displayEmployeeInfo();
+        System.out.println("Total employees: " + Employee.getTotalEmployees());
+    }
+}
