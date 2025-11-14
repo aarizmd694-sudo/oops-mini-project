@@ -1,0 +1,45 @@
+MODULE 5(Frontend and User Interface):
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Module5_GUI extends JFrame {
+
+    private JTextField employeeIdField;
+    private JTextArea displayArea;
+
+    public Module5_GUI() {
+        setTitle("Employee Leave Management - Leave Checker");
+        setSize(450, 280);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JLabel label = new JLabel("Enter Employee ID:");
+        employeeIdField = new JTextField(12);
+        JButton checkButton = new JButton("Check Leave");
+        displayArea = new JTextArea(6, 32);
+checkButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String empId = employeeIdField.getText();
+
+                displayArea.append("Checking leave for Employee ID: " + empId + "\n");
+                displayArea.append("Employee found: John Doe\n");
+                displayArea.append("Leaves Taken: 5\nLeaves Remaining: 15\n\n");
+            }
+        });
+
+        JPanel panel = new JPanel();
+        panel.add(label);
+        panel.add(employeeIdField);
+        panel.add(checkButton);
+        panel.add(new JScrollPane(displayArea));
+
+        add(panel);
+        setVisible(true);
+
+  }
+
+
+    public static void main(String[] args) {
+        new Module5_GUI();
+    }
+}
