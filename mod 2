@@ -1,0 +1,28 @@
+MODULE 2:
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Module2_ExceptionStreams {
+    public static void main(String[] args) {
+
+        String[] employeeIDs = {"EMP101", "EMP102", "EMP103"};
+
+        try {
+            // Trying to access invalid index
+            System.out.println("Accessing Employee ID: " + employeeIDs[5]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error: Employee ID not found in system!");
+        } finally {
+            System.out.println("Employee ID check completed.");
+        }
+ // Writing employee leave data into a file
+        try (FileWriter fw = new FileWriter("employee_leave_log.txt")) {
+            fw.write("Employee Leave Log\n");
+            fw.write("Employee: John Doe | ID: EMP105 | Leaves Taken: 5\n");
+            System.out.println("Employee leave log successfully written to file.");
+        } catch (IOException e) {
+            System.out.println("File writing error: " + e.getMessage());
+        }
+    }
+}
